@@ -1,5 +1,0 @@
-﻿  test2.cpp
-c:\users\kevin\desktop\백준알고리즘\boj\일차원배열사용하기\2577_숫자갯수구하기\project1\project1\test2.cpp(31): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-c:\users\kevin\desktop\백준알고리즘\boj\일차원배열사용하기\2577_숫자갯수구하기\project1\project1\test2.cpp(29): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdlib.h(1334): note: 'itoa' 선언을 참조하십시오.
-  Project1.vcxproj -> C:\Users\kevin\Desktop\백준알고리즘\BOJ\일차원배열사용하기\2577_숫자갯수구하기\Project1\Debug\Project1.exe
