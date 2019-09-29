@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+int M = -1;
+vector < vector<pair<int, int> > >sol;   // sol[from] = {to, weight}
+int visit[100001];
+void DFS(int, int);
+int index = -1;
+
+int main()
+{
+   int T;
+   scanf("%d", &T);
+   sol.resize(T + 1);
+   for (int i = 0; i < T - 1; i++)
+   {
+      int a, b, c;
+      scanf("%d %d %d", &a, &b, &c);
+      sol[a].push_back({ b, c });      // 무방향 그래프 이므로 a,b 와 b,a 모두에 저장해주어야 한다.
+      sol[b].push_back({ a, c });
+   }
+   visit[1] = 1;      // 먼저 1번 노드 방문했다고 체크 하고
+   DFS(1,0);         // DFS(1) 시작
+   fill_n(visit, 100001, 0);   // 방문한 정보 초기화
+   M = -1;
+   visit[index] = 1;      // 루트에서 가장 멀리 있는 노드에서 다시 DFS 시작
+   DFS(index, 0);
+   printf("%d", M);
+}
+void DFS(int num, int w)
+{
+   // 기저 조건
+   if (sol[num].size()==1 && visit[sol[num][0].first] == 1)   // 해당 노드에서 갈 수 있는 곳이 1곳이고, 그 곳도 이미 방문했다면
+   {                                             // 즉, 리프 라는 말임
+      if (M < w )
+      {
+         M = w ;         // 그때까지의 가중치를 최댓값과 비교해서 항상 최댓값만 가져간다.
+         index = num;   // 해당 노드의 노드 번호 저장
+      }
+      return;            // 리턴
+   }
+
+   for (int i = 0; i < sol[num].size(); i++)
+   {
+      if (visit[(sol[num][i].first)] == 0)      // 그 다음 노드를 아직 방문하지 않았다면
+      {
+         visit[sol[num][i].first] = 1;      // 그 다음 노드를 방문했다고 체크 하고
+         DFS(sol[num][i].first, w+sol[num][i].second);   // 그 다음 노드로 DFS 다시 시작, 가중치를 더하고 들어간다.
+         visit[sol[num][i].first] = 0;
+      }
+   }
+
+}

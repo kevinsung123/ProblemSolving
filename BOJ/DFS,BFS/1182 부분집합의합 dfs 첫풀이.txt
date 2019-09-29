@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+int arr[20];
+bool check[20];
+int match[20];
+int ans, n, sum;
+//а╤гу!
+void print()
+{
+	for (int i = 0;i < n;i++) printf("%d ", match[i]);
+	printf("\n");
+
+	for (int i = 0;i < n;i++) printf("%d ", check[i]);
+	printf("\n");
+}
+void dfs(int idx, int use,int tot)
+{
+	if (idx > n) return;
+	if(tot==sum && idx>0)
+	{
+		//print();
+		ans++;
+	}
+	if (use == n) return;
+	for (int i = use;i < n;i++)
+	{
+		if (!check[i])
+		{
+			check[i] = true;
+			match[idx] = arr[i];
+			dfs(idx + 1, i + 1, tot + arr[i]);
+			check[i] = false;
+		}
+	}
+}
+
+int main()
+{
+
+	scanf("%d %d", &n, &sum);
+	for (int i = 0;i < n;i++)scanf("%d", &arr[i]);
+	dfs(0, 0, 0);
+	printf("%d\n", ans);
+}

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1932(삼각형더하기)", "1932(삼각형더하기)\1932(삼각형더하기).vcxproj", "{7AC60C4D-3DFF-4FBE-A1F4-FAA049E62B26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AC60C4D-3DFF-4FBE-A1F4-FAA049E62B26}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7AC60C4D-3DFF-4FBE-A1F4-FAA049E62B26}.Debug|Win32.Build.0 = Debug|Win32
+		{7AC60C4D-3DFF-4FBE-A1F4-FAA049E62B26}.Release|Win32.ActiveCfg = Release|Win32
+		{7AC60C4D-3DFF-4FBE-A1F4-FAA049E62B26}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

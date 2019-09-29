@@ -1,0 +1,9 @@
+3
+there
+amanaplanacanal
+xyz
+예제 출력
+
+7
+21
+5

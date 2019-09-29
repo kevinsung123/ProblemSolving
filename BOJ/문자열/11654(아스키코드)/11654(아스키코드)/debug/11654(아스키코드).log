@@ -1,0 +1,5 @@
+﻿  11654.cpp
+c:\users\user\desktop\백준알고리즘\11654(아스키코드)\11654(아스키코드)\11654.cpp(10): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  11654(아스키코드).vcxproj -> C:\Users\user\Desktop\백준알고리즘\11654(아스키코드)\Debug\11654(아스키코드).exe
+  11654(아스키코드).vcxproj -> C:\Users\user\Desktop\백준알고리즘\11654(아스키코드)\Debug\11654(아스키코드).pdb (Full PDB)

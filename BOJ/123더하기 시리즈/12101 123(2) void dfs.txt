@@ -1,0 +1,37 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int n, k;
+int match[20];
+int cnt;
+//idx= 사용된수의 개수, sum=합
+void dfs(int idx,int sum)
+{
+	
+	if (sum > n) return;
+
+	
+	if (sum == n)
+	{
+		cnt++;
+		if (cnt == k)
+		{
+			for (int i = 0;i < idx-1;i++)cout << match[i] << "+";
+			cout << match[idx - 1] << "\n";			
+			return;
+		}
+	}
+	for (int i = 1;i <=3;i++)
+	{
+		match[idx] = i;
+		dfs(idx + 1, sum + i);
+	}
+}
+int main()
+{
+	cin >> n >> k;
+	dfs(0, 0);
+	cnt < k ? cout << "-1\n" : cout<<"";
+	
+}

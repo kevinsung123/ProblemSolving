@@ -1,0 +1,6 @@
+﻿  test.cpp
+c:\users\kevin\desktop\백준알고리즘\boj\규칙찾기\1011_flyme\project1\project1\test.cpp(9): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: 'scanf' 선언을 참조하십시오.
+c:\users\kevin\desktop\백준알고리즘\boj\규칙찾기\1011_flyme\project1\project1\test.cpp(17): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1272): note: 'scanf' 선언을 참조하십시오.
+  Project1.vcxproj -> C:\Users\kevin\Desktop\백준알고리즘\BOJ\규칙찾기\1011_flyme\Project1\Debug\Project1.exe

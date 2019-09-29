@@ -1,0 +1,55 @@
+var EXTENDING_STORE_URL = "//extends.colorscripter.com";
+
+function goExtendingStore() {
+	window.open(EXTENDING_STORE_URL, "_blank");
+}
+
+function loadPlugins() {
+
+	ajaxGet(EXTENDING_STORE_URL + "/api/plugins/applyed?colorscripter_main=1", function (data) {
+		data = JSON.parse(data);
+
+		if (data.isEmpty) return;
+
+		EDITOR_DEFAULT_RETURN_MODE = ColorScripter.RETURN_SPAN_MODE;
+		cs.setReturnMode( EDITOR_DEFAULT_RETURN_MODE );
+		
+		for (var i=0; i<data.languages.length; i++) {
+			var row = data.languages[i];
+			ColorScripter.languages[row.id] = row.jsonData;
+			stylePackageExampleCodes[row.id] = row.exampleCode.split("\t").join("  ");
+
+			var newLi = document.createElement("li");
+			newLi.innerHTML = row.name + '<span class="plugin">plugin</span>\
+				<input type="hidden" name="lang-name" value="'+row.id+'">';
+
+			newLi.addEventListener("click", languageNodeListsSelectHandler);
+			newLi.addEventListener("mouseover", selectLanguageHoverHandler);
+
+			selectLanguagePopup.getElementsByTagName("ul")[0].appendChild(newLi);
+		}
+
+
+		for (var i=0; i<data.stylePackages.length; i++) {
+			var row = data.stylePackages[i];
+			ColorScripter.stylePackages[row.id] = row.jsonData;
+
+			var newLi = document.createElement("li");
+			newLi.className = "plugin";
+			newLi.innerHTML = '<h4>' + row.name + '<span class="plugin">plugin</span></h4>\
+				<input type="hidden" name="package-name" value="'+row.id+'">\
+				<div class="example-code"></div>';
+
+			newLi.addEventListener("click", stylePackageListSelectHandler);
+
+			selectStylePackagePopup.getElementsByTagName("ul")[0].appendChild(newLi);
+		}
+
+
+		languageNodeLists = selectLanguagePopup.getElementsByTagName("li");
+		stylePackageNodeLists = selectStylePackagePopup.getElementsByTagName("li");
+
+		document.getElementById("plugin-btn").className += ' actived';
+	});
+
+}

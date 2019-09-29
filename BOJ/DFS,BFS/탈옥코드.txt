@@ -1,0 +1,173 @@
+#include<iostream>
+#include<queue>
+#include<vector>
+#include<algorithm>
+#include<utility>
+#include<string>
+using namespace std;
+int dx[] = { 1,-1,0,0 };
+int dy[] = { 0,0,1,-1 };
+int H, W;
+bool isOut(int y, int x)
+{
+	return (y<=0 || y>=H - 1 ||x<=0 || x>=W- 1);
+}
+
+void print(vector<string> &tmp)
+{
+	for (auto y : tmp)
+	{
+		cout << y << "\n";
+	}
+}
+int main()
+{
+
+	int t;
+	cin >> t;
+	while (t--) //테스트 케이스
+	{
+		cin >> H >> W;
+		string map[102];
+		//s배열은 상근,죄수1,죄수2 시작 위치 
+		//상근은 맵 밖에서 문을 열어줌
+		//죄수들은 각각 자기 위치에서 시작
+		int d[3][102][102],sy[3] = { 0 }, sx[3] = { 0 }, ycnt = 0, xcnt = 0;
+		int sy1 = 0, sx1 = 0, sy2 = 0, sx2 = 0;
+		for (int i = 1; i <= H; i++)
+		{
+			cin >> map[i];
+
+			for (int j = 0; j < W; j++)
+			{
+				if (map[i][j] == '$')//죄수 
+				{
+					//죄수들 위치는 어차피 빈공간
+					if (sy1 == 0 && sx1 == 0)
+					{
+						sy1 = i, sx1 = j; 
+						map[i][j] = '.';
+					}
+					else if (sy2 == 0 && sx2 == 0)
+					{
+						sy2 = i, sx2 = j;
+						map[i][j] = '.';
+					};
+				}
+
+			}
+		}
+
+		q1.push({ sy1,sx1 });
+		q2.push({ sy2,sx2 });
+		//죄수1,2  탈출여부
+		bool des1 = false;
+		bool des2 = false;
+		queue<pair<int, int>> nq1;
+		queue<pair<int, int>> nq2;
+		int ans = 0;
+		while (1)
+		{
+			//죄수2명 탈출 체크
+			if (des1 && des2) break;
+			int cy, cx;
+
+			bool find1 = false;
+			if (!des1)
+			{
+				while (!q1.empty())
+				{
+					int qsize = q1.size();
+					while (qsize--) //level queue
+					{
+						cy = q1.front().first;
+						cx = q1.front().second;
+						q1.pop();
+						check1[cy][cx] = 1;
+						//printf("죄수1 y=%d x=%d\n", cy, cx);
+						if (isOut(cy, cx))//탈출 검증
+						{
+							des1 = true;
+							break;
+						}
+						for (int k = 0; k < 4; k++)
+						{
+							int ny = cy + dy[k];
+							int nx = cx + dx[k];
+							if (ny<0 || ny>H - 1 || nx<0 || nx>W - 1) continue;//범위체크
+							if (map[ny][nx] == '*' || check1[ny][nx]) continue; //벽 방문 여부 체크
+							if (map[ny][nx] == '#')
+							{
+								ans++;  //문 개수 증가
+								nq1.push({ ny,nx }); //벽들은 다음에 들어감
+								map[ny][nx] = '.'; //빈공간으로 체크
+								find1 = true;
+								//printf("죄수1 문개방 %d %d\n", ny, nx);
+								//break;  //문 발견시 일단 나감
+							}
+							else
+							{
+								check1[ny][nx] = 1;
+								q1.push({ ny,nx });
+							}
+						}
+						if (find1) break;
+					}
+					if (find1) break;
+				}
+				q1 = nq1;
+				nq1 = queue<pair<int, int>>();  //초기화
+			}
+			if (!des2)
+			{
+				bool find2 = false;
+				while (!q2.empty())
+				{
+					int qsize = q2.size();
+					while (qsize--)//level queue
+					{
+						cy = q2.front().first;
+						cx = q2.front().second;
+						q2.pop();
+						check2[cy][cx] = 1;
+						//printf("죄수2 y=%d x=%d\n", cy, cx);
+						if (isOut(cy, cx))
+						{
+							des2 = true;
+							break;
+						}
+						for (int k = 0; k < 4; k++)
+						{
+							int ny = cy + dy[k];
+							int nx = cx + dx[k];
+							if (ny<0 || ny>H - 1 || nx<0 || nx>W - 1) continue;//범위체크
+							if (map[ny][nx] == '*' || check2[ny][nx]) continue; //벽 방문 여부 체크
+							if (map[ny][nx] == '#')
+							{
+								ans++;  //문 개수 증가
+								nq2.push({ ny,nx }); //벽들은 다음에 들어감
+								map[ny][nx] = '.'; //빈공간으로 체크
+								find2 = true;
+								//printf("죄수2 문개방 %d %d\n", ny, nx);
+								//break;  //문 발견시 일단 나감
+							}
+							else
+							{
+								check2[ny][nx] = 1;
+								q2.push({ ny,nx });
+							}
+						}
+						if (find2) break;
+					}
+					if (find2) break;
+				}
+				q2 = nq2;
+				nq2 = queue<pair<int, int>>();  //초기화
+			}
+			//print(map);
+		}
+		cout << ans << "\n";
+	}
+
+
+}
