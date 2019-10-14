@@ -30,7 +30,8 @@
 
 
 
-#Dijkstra's algorithm다익스트라 관련 문제
+## Dijkstra's algorithm다익스트라 관련 문제
+
 * 1753 최단경로 -다익스트라 기본
 
 * 1916 최소비용 구하기
