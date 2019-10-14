@@ -25,12 +25,9 @@
  * pair는 첫번쨰 인자의 대소비교를 먼저하므로 dist값이 작을수록 우선순위큐에서 먼저 나옴
 
 
- **<예제코드>**
-<<<<<<< HEAD
+ ** <예제코드>
+
 ![dijkstra](./img/djkstra.png)
-=======
- 
->>>>>>> 977005fa884c1d781e4fe0f9dbf0938cda933e42
 
 
 ## Dijkstra's algorithm다익스트라 관련 문제
