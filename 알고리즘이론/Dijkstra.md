@@ -26,7 +26,7 @@
 
  **<예제코드>**
  
-![dijkstra](C:\Users\kevin\Desktop\알고리즘\djkstra.png)
+![dijkstra](C:\Users\kevin\Desktop\알고리즘\ProblemSolving\img\djkstra.png)
 
 
 
