@@ -151,4 +151,19 @@
 			q.pop();
 		}
 	}
+	 ```
+###  예제2
+  ```
+	 #include <cstdio>
+	#include <queue>
+	using namespace std;
+	struct a{
+	int start;
+	int end;
+	int value;
+	};
+	bool operator<(a t, a u){
+	return t.value < u.value;
+	}
+	priority_queue<a> pq;
  ```
