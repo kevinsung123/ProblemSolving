@@ -28,9 +28,6 @@
  **<예제코드>**
 <<<<<<< HEAD
 ![dijkstra](./img/djkstra.png)
-=======
- 
->>>>>>> 977005fa884c1d781e4fe0f9dbf0938cda933e42
 
 
 ## Dijkstra's algorithm다익스트라 관련 문제
